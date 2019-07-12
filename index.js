@@ -1,3 +1,3 @@
 'use strict';
 
-module.exports = require('./dist/servicejs');
+module.exports = require('./dist/js-api-extend');

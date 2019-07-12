@@ -63,7 +63,8 @@
         this.length = 0;
     };
 
-    // TODO : array extendsion - same instance clearing
-    // TODO : String extending automatically get Integer, Float, String, Boolean
+    Array.prototype.insertAt = function (at, anotherArray) {
+        this.splice(at, 0, ...anotherArray);
+    };
 
 })();

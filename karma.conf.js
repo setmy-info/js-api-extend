@@ -4,12 +4,12 @@ module.exports = function (config) {
         frameworks: ['jasmine'],
         files: [
             'src/test/js/**/*Spec.js',
-            'src/main/webapp/js/servicejs.js'
+            'src/main/webapp/js/js-api-extend.js'
         ],
         exclude: [
         ],
         preprocessors: {
-            'src/main/webapp/js/servicejs.js': ['coverage']
+            'src/main/webapp/js/js-api-extend.js': ['coverage']
         },
         reporters: ['progress', 'coverage', 'junit'],
         port: 9876,

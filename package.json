@@ -1,7 +1,7 @@
 {
     "name": "js-api-extend",
     "description": "JavaScript dependencies injection based services layer.",
-    "version": "1.0.0-SNAPSHOT",
+    "version": "1.0.0",
     "license": "MIT",
     "author": "Imre Tabur <imre.tabur@eesti.ee>",
     "main": "index.js",
@@ -9,7 +9,7 @@
         "start": "node ./src/test/js/backend/bin/www",
         "unit": "karma start karma.conf.js --single-run",
         "tdd": "karma start karma.conf.js",
-        "test": "node ./src/main/webapp/node/js-api-extend.js",
+        "test": "node ./src/main/webapp/node/index.js",
         "build": "node ./build.js",
         "program": "echo \"Error: no program specified\" && exit 1"
     },
