@@ -1,87 +1,69 @@
 /*!
  * MIT License
  *
- * Copyright (c) 2017-2019 Imre Tabur <imre.tabur@eesti.ee>
+ * Copyright (c) 2019 Imre Tabur <imre.tabur@eesti.ee>
  */
 "use strict";
 
-(function (global) {
+(function () {
 
-    var jsdi = global.jsdi = global.jsdi || {};
+    String.INTEGER_TYPE = 0;
+    String.FLOAT_TYPE = 1;
 
-    var isInitialized = false;
-
-    jsdi.services = {
-    };
-
-    jsdi.service = function (serviceName, serviceObject) {
-        var instance;
-        if (typeof serviceObject === 'function') {
-            instance = serviceObject();
-        } else {
-            instance = serviceObject;
-        }
-        jsdi.services[serviceName] = instance;
-    };
-
-    jsdi.initServices = function () {
-        jsdi.resolveDependencies();
-        var serviceObject, serviceObjectPropertyName;
-        for (serviceObjectPropertyName in jsdi.services) {
-            serviceObject = jsdi.services[serviceObjectPropertyName];
-            if (serviceObject.init) {
-                serviceObject.init();
+    String.prototype.getNumberType = function () {
+        if (this.isNumber()) {
+            if (this.indexOf(".") >= 0) {
+                return String.FLOAT_TYPE;
+            } else {
+                return String.INTEGER_TYPE;
             }
         }
-        isInitialized = true;
+        return -1;
     };
 
-    jsdi.resolveDependencies = function () {
-        var serviceObject, serviceObjectPropertyName;
-        for (serviceObjectPropertyName in jsdi.services) {
-            serviceObject = jsdi.services[serviceObjectPropertyName];
-            jsdi.resolveServiceDependenciesFromList(serviceObject);
-            jsdi.resolveServiceDependenciesFromObject(serviceObject);
+    String.prototype.toNumber = function () {
+        switch (this.getNumberType()) {
+            case String.INTEGER_TYPE:
+                return parseInt(this);
+            case String.FLOAT_TYPE:
+                return parseFloat(this);
         }
     };
 
-    jsdi.resolveServiceDependenciesFromList = function (serviceObject) {
-        if (serviceObject.inject) {
-            var depNamePosition, serviceName;
-            for (depNamePosition in serviceObject.inject) {
-                serviceName = serviceObject.inject[depNamePosition];
-                serviceObject[serviceName] = jsdi.services[serviceName];
-            }
+    String.prototype.toBoolean = function () {
+        var lowerCase = this.toLowerCase();
+        if (lowerCase === 'true' || lowerCase === 'yes') {
+            return true;
+        } else if (lowerCase === 'false' || lowerCase === 'no') {
+            return false;
         }
     };
 
-    jsdi.resolveServiceDependenciesFromObject = function (serviceObject) {
-        var propertyName, property;
-        for (propertyName in serviceObject) {
-            property = serviceObject[propertyName];
-            if (property === null) {
-                serviceObject[propertyName] = jsdi.services[propertyName];
-            }
+    String.prototype.isNumber = function () {
+        return !this.isNaN();
+    };
+
+    String.prototype.isNaN = function () {
+        return isNaN(this);
+    };
+
+    String.prototype.toType = function () {
+        var result = this.toNumber();
+        if (typeof (result) !== 'undefined') {
+            return result;
         }
-    };
-
-    jsdi.getObject = function (obj) {
-        return JSON.parse(JSON.stringify(obj));
-    };
-
-    var getReplacement = function (serviceName) {
-        if (serviceName) {
-            return this.services[serviceName];
+        result = this.toBoolean();
+        if (typeof (result) !== 'undefined') {
+            return result;
         }
-        return this.services;
+        return this;
     };
 
-    jsdi.get = function (serviceName) {
-        if (!isInitialized) {
-            this.initServices();
-        }
-        jsdi.get = getReplacement;
-        return jsdi.get(serviceName);
+    Array.prototype.clear = function () {
+        this.length = 0;
     };
 
-})(typeof window === 'undefined' ? global : window);
+    // TODO : array extendsion - same instance clearing
+    // TODO : String extending automatically get Integer, Float, String, Boolean
+
+})();

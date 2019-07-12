@@ -28,7 +28,8 @@
         "url": "https://github.com/setmy-info/js-api-extend/issues"
     },
     "homepage": "https://github.com/setmy-info/js-api-extend#readme",
-    "dependencies": {
+    "dependencies": {},
+    "devDependencies": {
         "cookie-parser": "~1.4.4",
         "body-parser": "^1.18.3",
         "debug": "~2.6.9",
@@ -37,9 +38,7 @@
         "jsonwebtoken": "^8.5.1",
         "morgan": "~1.9.1",
         "pug": "^2.0.3",
-        "serve-favicon": "~2.5.0"
-    },
-    "devDependencies": {
+        "serve-favicon": "~2.5.0",
         "jasmine": "^3.4.0",
         "jasmine-core": "^3.4.0",
         "karma": "^4.1.0",
