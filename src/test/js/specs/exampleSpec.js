@@ -77,6 +77,13 @@ describe("JS extending", function () {
             array.insertAt(2, another);
             expect(array).toEqual(["a", "b", "0", "1", "c"]);
         });
+
+        it("should insert another element in the middle", function () {
+            var array = ["a", "b", "c"];
+            var another = "x";
+            array.insertAt(2, another);
+            expect(array).toEqual(["a", "b", "x", "c"]);
+        });
     });
 
 });

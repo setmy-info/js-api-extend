@@ -64,7 +64,14 @@
     };
 
     Array.prototype.insertAt = function (at, anotherArray) {
-        this.splice(at, 0, ...anotherArray);
+        var i = at, j;
+        if (anotherArray instanceof Array) {
+            for (j = 0; j < anotherArray.length; j++, i++) {
+                this.splice(i, 0, anotherArray[j]);
+            }
+        } else {
+            this.splice(i, 0, anotherArray);
+        }
     };
 
 })();
