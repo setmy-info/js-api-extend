@@ -59,6 +59,15 @@
         return this;
     };
 
+    String.prototype.contain = String.prototype.contains || function (str) {
+        return this.indexOf(str) !== -1;
+    };
+
+    String.getRandom = function (length) {
+        // TODO : use length for random string lengt to be generated in next releases. Should stay simple
+        return Math.random().toString(36).slice(2);
+    };
+
     Array.prototype.clear = function () {
         this.length = 0;
     };
@@ -74,4 +83,12 @@
         }
     };
 
+    Storage.prototype.setObject = function (key, object) {
+        this.setItem(key, JSON.stringify(object));
+    };
+
+    Storage.prototype.getObject = function (key) {
+        var value = this.getItem(key);
+        return JSON.parse(value);
+    };
 })();

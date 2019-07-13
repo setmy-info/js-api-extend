@@ -42,7 +42,26 @@ describe("JS extending", function () {
             var text = "Hello World 123.45";
             expect(text.toType()).toBe('Hello World 123.45');
         });
+
+        it("should generate random strings", function () {
+            var randomStringOne = String.getRandom(5);// TODO : length
+            var randomStringTwo = String.getRandom(5);
+            expect(randomStringOne).not.toEqual(randomStringTwo);
+        });
+
+        it("should retrurn true when string contains another sring", function () {
+            var text = "Hello World!";
+            var anotherText = "World"
+            expect(text.contain(anotherText)).toBe(true);
+        });
+
+        it("should retrurn false when string contains another sring", function () {
+            var text = "Hello World!";
+            var anotherText = "aaa"
+            expect(text.contain(anotherText)).toBe(false);
+        });
     });
+
     describe("array class", function () {
 
         it("should clear array", function () {
@@ -86,4 +105,22 @@ describe("JS extending", function () {
         });
     });
 
+    describe("storage class", function () {
+
+        it("should set object and get it back", function () {
+            const key = "storageObject";
+            const object = {abc: "def", ghi: {jkl: "mno"}};
+            localStorage.setObject(key, object);
+            const storageObject = localStorage.getObject();
+            const storageObjectString = localStorage.getItem(key);
+            expect(storageObject).toEqual(storageObject);
+            expect(storageObjectString).toEqual("{\"abc\":\"def\",\"ghi\":{\"jkl\":\"mno\"}}");
+        });
+
+        it("should get null when object doesnt exist in storage", function () {
+            const key = "blablablablabla";
+            const storageObject = localStorage.getObject();
+            expect(storageObject).toBeNull();
+        });
+    });
 });
