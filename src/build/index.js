@@ -1,6 +1,8 @@
 var fs = require('fs');
 var uglify = require("uglify-js");
 
+var Storage = Storage || {};
+
 var code = {
     "js-api-extend.js": fs.readFileSync("./src/main/webapp/js/js-api-extend.js", "utf8")
 };
