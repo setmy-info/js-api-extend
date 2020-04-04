@@ -13,7 +13,7 @@ npm ci
 npm run build
 npm run test
 npm run unit
-git add ./dist package.json package-lock.json release.sh ./src/main/webapp/js/${NAME}.min.js
+git add ./dist package.json package-lock.json release.sh
 git commit -m "${VERSION_TAG}"
 git push
 git checkout master
