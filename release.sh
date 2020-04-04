@@ -7,6 +7,8 @@ NAME=js-api-extend
 RELEASE=1.1.5
 VERSION_TAG=version-${RELEASE}
 
+npm install
+npm audit fix
 npm ci && npm run build && npm run test && npm run unit
 git add ./dist package.json package-lock.json release.sh src/main/webapp/js/${NAME}.min.js
 git commit -m "${VERSION_TAG}"
