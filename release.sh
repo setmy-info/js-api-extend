@@ -3,10 +3,10 @@
 # MIT License
 # Copyright (c) 2017-2019 Imre Tabur <imre.tabur@eesti.ee>
 
-RELEASE=1.1.2
+RELEASE=1.1.3
 VERSION_TAG=version-${RELEASE}
 
-npm install && npm run build && npm run test && npm run unit
+npm ci && npm run build && npm run test && npm run unit
 git add ./dist package.json package-lock.json release.sh
 git commit -m "${VERSION_TAG}"
 git push
