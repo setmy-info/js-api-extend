@@ -4,7 +4,7 @@
 # Copyright (c) 2017-2019 Imre Tabur <imre.tabur@eesti.ee>
 
 NAME=js-api-extend
-RELEASE=1.1.5
+RELEASE=1.1.6
 VERSION_TAG=version-${RELEASE}
 
 npm ci && npm run build && npm run test && npm run unit
