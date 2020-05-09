@@ -3,3 +3,4 @@ npm-debug.log
 /nbproject/private
 target
 src/main/webapp/js/js-api-extend.min.js
+.idea
