@@ -1,2 +1,2 @@
 
-module.exports = require('js-api-extend');
+module.exports = require('./js-api-extend');

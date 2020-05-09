@@ -4,7 +4,7 @@
 # Copyright (c) 2017-2020 Imre Tabur <imre.tabur@eesti.ee>
 
 NAME=js-api-extend
-RELEASE=1.2.0
+RELEASE=`node ./src/build/version.js`
 VERSION_TAG=version-${RELEASE}
 
 npm install
