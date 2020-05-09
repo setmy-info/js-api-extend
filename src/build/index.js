@@ -1,8 +1,21 @@
-let fs = require('fs');
-let uglify = require("uglify-js");
+const fs = require('fs');
+const uglify = require("uglify-js");
+
+const projectName = "js-api-extend";
+const sourceFileName = projectName + ".js";
+const minifiedFileName = projectName + ".min.js";
+const indexFileName = "index.js";
+const sourcesLocation = "./src/main/webapp/js/";
+const sourcePath = sourcesLocation + sourceFileName;
+const minifiedPath = sourcesLocation + minifiedFileName;
+const indexPath = sourcesLocation + indexFileName;
+const distPath = "./dist/";
+const distFilePath = distPath + sourceFileName;
+const distMinifiedFilePath = distPath + minifiedFileName;
+const distIndexFilePath = distPath + indexFileName;
 
 let code = {
-    "js-api-extend.js": fs.readFileSync("./src/main/webapp/js/js-api-extend.js", "utf8")
+    "js-api-extend.js": fs.readFileSync(sourcePath, "utf8")
 };
 
 let options = {
@@ -11,6 +24,10 @@ let options = {
     }
 };
 
-fs.writeFileSync("./src/main/webapp/js/js-api-extend.min.js", uglify.minify(code, options).code, "utf8");
+// Make minification, next to unminified project source file
+fs.writeFileSync(minifiedPath, uglify.minify(code, options).code, "utf8");
 
-fs.createReadStream("./src/main/webapp/js/js-api-extend.js").pipe(fs.createWriteStream("./dist/js-api-extend.js"));
+// Copy to dist 
+fs.createReadStream(sourcePath).pipe(fs.createWriteStream(distFilePath));
+fs.createReadStream(minifiedPath).pipe(fs.createWriteStream(distMinifiedFilePath));
+fs.createReadStream(indexPath).pipe(fs.createWriteStream(distIndexFilePath));

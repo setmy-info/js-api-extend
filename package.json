@@ -1,16 +1,16 @@
 {
     "name": "js-api-extend",
     "description": "Extending JS API classes.",
-    "version": "1.2.1",
+    "version": "1.3.0",
     "license": "MIT",
     "author": "Imre Tabur <imre.tabur@eesti.ee>",
-    "main": "dist/js-api-extend.min.js",
+    "main": "dist/index.js",
     "scripts": {
         "start": "node ./src/test/js/backend/bin/www",
         "unit": "karma start karma.conf.js --single-run",
         "tdd": "karma start karma.conf.js",
         "test": "node ./src/main/webapp/node/index.js",
-        "build": "node ./src/build/index.js && webpack",
+        "build": "node ./src/build/index.js",
         "program": "echo \"Error: no program specified\" && exit 1"
     },
     "repository": {
