@@ -6,7 +6,7 @@
     "author": "Imre Tabur <imre.tabur@eesti.ee>",
     "main": "dist/index.js",
     "scripts": {
-        "start": "node src\/test\/js\/backend\/bin\/www",
+        "start": "node src/test/js/backend/bin/www",
         "unit": "karma start karma.conf.js --single-run",
         "tdd": "karma start karma.conf.js",
         "test": "node ./src/main/webapp/node/index.js",
@@ -26,7 +26,6 @@
         "url": "https://github.com/setmy-info/js-api-extend/issues"
     },
     "homepage": "https://github.com/setmy-info/js-api-extend#readme",
-    "dependencies": {},
     "devDependencies": {
         "body-parser": "^1.19.0",
         "cookie-parser": "~1.4.5",
@@ -35,7 +34,7 @@
         "http-errors": "~1.8.0",
         "jasmine": "^3.7.0",
         "jasmine-core": "^3.7.1",
-        "jsonwebtoken": "^8.5.1",
+        "jsonwebtoken": "^9.0.0",
         "karma": "^6.3.3",
         "karma-chrome-launcher": "^3.1.0",
         "karma-coverage": "^2.0.3",
